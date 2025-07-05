@@ -1,1 +1,1 @@
-# inventory-live-dashboard
+<iframe width="600" height="800" src="https://lookerstudio.google.com/embed/reporting/d81cfea9-51b1-4a37-8570-f5aecbc1fbe8/page/page_12345" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>

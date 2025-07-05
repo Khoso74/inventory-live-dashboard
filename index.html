@@ -1,57 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="transition duration-300">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Inventory Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          animation: {
+            fadeIn: 'fadeIn 1s ease-in-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0, transform: 'translateY(10px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-all duration-300">
 
   <div class="container mx-auto p-6 max-w-7xl">
+    
     <!-- Header -->
-    <h1 class="text-3xl font-bold text-gray-900 mb-6 flex flex-wrap items-center">
-      📊 My Inventory Dashboard
-      <span class="ml-4 text-sm text-gray-500">Last Updated: 02:28 AM PKT, July 06, 2025</span>
-    </h1>
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold flex items-center gap-3">
+        📊 My Inventory Dashboard
+        <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full dark:bg-green-900 dark:text-green-300">
+          Live Update
+        </span>
+      </h1>
+
+      <!-- Controls -->
+      <div class="flex items-center gap-3 no-print">
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow text-sm">
+          <i class="fas fa-file-pdf mr-1"></i> Download PDF
+        </button>
+        <button onclick="location.reload()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded shadow text-sm">
+          <i class="fas fa-sync-alt mr-1"></i> Refresh
+        </button>
+        <button onclick="toggleDarkMode()" class="bg-gray-800 text-white px-3 py-2 rounded shadow text-sm dark:bg-gray-200 dark:text-black">
+          <i class="fas fa-adjust"></i>
+        </button>
+      </div>
+    </div>
 
     <!-- Summary Metrics -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-      <div class="bg-white p-4 rounded-lg shadow-md">
-        <p class="text-gray-600">Total Items</p>
-        <p class="text-2xl font-semibold text-gray-900">114</p>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 animate-fadeIn">
+      <div class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md hover:shadow-xl transition">
+        <p class="text-gray-500 dark:text-gray-300 flex items-center gap-2"><i class="fas fa-box"></i> Total Items</p>
+        <p class="text-3xl font-bold mt-2">114</p>
       </div>
-      <div class="bg-white p-4 rounded-lg shadow-md">
-        <p class="text-gray-600">Total Stock</p>
-        <p class="text-2xl font-semibold text-green-700">20,770</p>
+      <div class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md hover:shadow-xl transition">
+        <p class="text-gray-500 dark:text-gray-300 flex items-center gap-2"><i class="fas fa-warehouse"></i> Total Stock</p>
+        <p class="text-3xl font-bold text-green-500 mt-2">20,770</p>
       </div>
-      <div class="bg-white p-4 rounded-lg shadow-md">
-        <p class="text-gray-600">Used Stock</p>
-        <p class="text-2xl font-semibold text-yellow-600">8,560</p>
+      <div class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md hover:shadow-xl transition">
+        <p class="text-gray-500 dark:text-gray-300 flex items-center gap-2"><i class="fas fa-dolly-flatbed"></i> Used Stock</p>
+        <p class="text-3xl font-bold text-yellow-400 mt-2">8,560</p>
       </div>
-      <div class="bg-white p-4 rounded-lg shadow-md">
-        <p class="text-gray-600">Remaining Stock</p>
-        <p class="text-2xl font-semibold text-blue-700">12,210</p>
+      <div class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md hover:shadow-xl transition">
+        <p class="text-gray-500 dark:text-gray-300 flex items-center gap-2"><i class="fas fa-box-open"></i> Remaining Stock</p>
+        <p class="text-3xl font-bold text-blue-400 mt-2">12,210</p>
       </div>
     </div>
 
     <!-- Embedded Report -->
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="p-4 border-b flex items-center justify-between">
-        <h2 class="text-xl font-semibold text-gray-900">Inventory Report</h2>
-        <span class="text-xs text-green-600 italic">Formula Fixed on July 6, 2025</span>
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden animate-fadeIn">
+      <div class="p-4 border-b dark:border-gray-600 flex items-center justify-between">
+        <h2 class="text-xl font-semibold">📑 Inventory Report</h2>
+        <span class="text-xs text-green-500 italic">Formula Fixed on July 6, 2025</span>
       </div>
       <iframe 
         width="100%" 
         height="600" 
         src="https://lookerstudio.google.com/embed/reporting/d81cfea9-51b1-4a37-8570-f5aecbc1fbe8/page/page_12345" 
         frameborder="0" 
-        style="border:0" 
+        class="w-full"
+        style="border:0;" 
         allowfullscreen 
         sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
       </iframe>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="mt-12 text-center text-sm text-gray-500 py-4 border-t dark:border-gray-700">
+    🚀 Powered by AI Automation Group | Built by Farooq Ahmed
+  </footer>
+
+  <!-- Dark Mode Toggle Script -->
+  <script>
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+  </script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Inventory Dashboard</title>
+  <title>Inventory Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -39,7 +39,7 @@
     <!-- Header -->
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-3xl font-bold flex items-center gap-3">
-        📊 My Inventory Dashboard
+        📊 Inventory Dashboard
         <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full dark:bg-green-900 dark:text-green-300">
           Live Update
         </span>
@@ -48,7 +48,7 @@
       <!-- Controls -->
       <div class="flex items-center gap-3 no-print">
         <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow text-sm">
-          <i class="fas fa-file-pdf mr-1"></i> Download PDF
+          <i class="fas fa-print mr-1"></i> Print PDF
         </button>
         <button onclick="location.reload()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded shadow text-sm">
           <i class="fas fa-sync-alt mr-1"></i> Refresh
@@ -79,7 +79,7 @@
       </div>
     </div>
 
-    <!-- Embedded Report -->
+    <!-- Embedded Looker Report -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden animate-fadeIn">
       <div class="p-4 border-b dark:border-gray-600 flex items-center justify-between">
         <h2 class="text-xl font-semibold">📑 Inventory Report</h2>
@@ -96,6 +96,16 @@
         sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
       </iframe>
     </div>
+
+    <!-- 📎 Analysis Report Button -->
+    <div class="text-center mt-8 no-print">
+      <a 
+        href="Untitled document.pdf" 
+        target="_blank" 
+        class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg shadow text-sm font-medium transition">
+        <i class="fas fa-file-alt mr-2"></i> View Stock Analysis Report (PDF)
+      </a>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -103,7 +113,7 @@
     🚀 Powered by AI Automation Group | Built by Farooq Ahmed
   </footer>
 
-  <!-- Dark Mode Toggle Script -->
+  <!-- Dark Mode Script -->
   <script>
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark');
